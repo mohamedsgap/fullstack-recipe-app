@@ -32,7 +32,7 @@ app.post('/api/recipes', (req, res, next) => {
         ingredients: req.body.ingredients,
         instructions: req.body.instructions,
         time: req.body.time,
-        difficulty: req.body.ifficulty
+        difficulty: req.body.difficulty
     });
     recipe.save().then(()=> {
         res.status(201).json({
@@ -65,7 +65,7 @@ app.put('/api/recipes/:id', (req, res, next) => {
       ingredients: req.body.ingredients,
       instructions: req.body.instructions,
       time: req.body.time,
-      difficulty: req.body.ifficulty
+      difficulty: req.body.difficulty
     });
     Recipe.updateOne({_id: req.params.id}, recipe).then(
       () => {
