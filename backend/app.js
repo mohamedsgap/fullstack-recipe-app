@@ -34,7 +34,7 @@ app.post('/api/recipes', (req, res, next) => {
         time: req.body.time,
         difficulty: req.body.ifficulty
     });
-    thing.save().then(()=> {
+    recipe.save().then(()=> {
         res.status(201).json({
             message: 'Post saved successfully!'
         });
@@ -60,7 +60,7 @@ app.get('/api/recipes/:id', (req, res, next) => {
 
 app.use('/api/recipes',(req, res, next) => {
     Recipe.find().then((recipes)=>{
-        res.status(200).json(things);
+        res.status(200).json(recipes);
     }).catch((error)=>{
         res.status(400).json({
             error: error
