@@ -26,4 +26,24 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 
+app.post('/api/recipes', (req, res, next) => {
+    const recipe = new Recipe({
+        title: req.body.title,
+        ingredients: req.body.ingredients,
+        instructions: req.body.instructions,
+        time: req.body.time,
+        difficulty: req.body.ifficulty
+    });
+    thing.save().then(()=> {
+        res.status(201).json({
+            message: 'Post saved successfully!'
+        });
+    }).catch((error)=>{
+        res.status(400).json({
+            error: error
+        });
+    });
+});
+
+
 module.exports = app;
