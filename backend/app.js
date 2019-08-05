@@ -58,6 +58,31 @@ app.get('/api/recipes/:id', (req, res, next) => {
     });
 });
 
+app.put('/api/recipes/:id', (req, res, next) => {
+    const recipe = new Recipe({
+      _id: req.params.id,
+      title: req.body.title,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      time: req.body.time,
+      difficulty: req.body.ifficulty
+    });
+    Recipe.updateOne({_id: req.params.id}, recipe).then(
+      () => {
+        res.status(201).json({
+          message: 'Recipe updated successfully!'
+        });
+      }
+    ).catch(
+      (error) => {
+        res.status(400).json({
+          error: error
+        });
+      }
+    );
+  });
+
+
 app.use('/api/recipes',(req, res, next) => {
     Recipe.find().then((recipes)=>{
         res.status(200).json(recipes);
