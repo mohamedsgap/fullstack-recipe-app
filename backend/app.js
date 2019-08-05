@@ -46,4 +46,15 @@ app.post('/api/recipes', (req, res, next) => {
 });
 
 
+app.use('/api/recipes',(req, res, next) => {
+    Recipe.find().then((recipes)=>{
+        res.status(200).json(things);
+    }).catch((error)=>{
+        res.status(400).json({
+            error: error
+        });
+    });
+});
+
+
 module.exports = app;
